@@ -2,14 +2,18 @@ FROM python:3.6-alpine3.6
 
 ENV PYTHONUNBUFFERED=1
 
-RUN pip3 install homeassistant
+RUN pip3 install homeassistant \
+  paho-mqtt==1.3.1 \
+  sqlalchemy==1.2.2 \
+  aiohttp_cors==0.6.0 \
+  home-assistant-frontend==20180209.0 \
+  user-agents==1.1.0 
 
 EXPOSE 8123
 
 RUN mkdir /config && chmod g+rw /config && \
   ln -s /media/config/configuration.yaml /config/configuration.yaml && \
-  ln -s /media/storage/home-assistant_v2.db /config/home-assistant_v2.db && \
-  ln -s /media/storage/deps /config/deps
+  ln -s /media/storage/home-assistant_v2.db /config/home-assistant_v2.db
   
 COPY ttt.py /ttt.py
 #CMD ["--config", "/config"]
