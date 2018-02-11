@@ -6,7 +6,7 @@ RUN pip3 install homeassistant
 
 EXPOSE 8123
 
-RUN mkdir /config && chmod o+rw /config
+RUN mkdir /config && chmod g+rw /config
 COPY ttt.py /ttt.py
 #CMD ["--config", "/config"]
 #ENTRYPOINT ["hass"]
