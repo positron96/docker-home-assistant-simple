@@ -1,5 +1,5 @@
-FROM python:3.6-alpine3.6
+FROM busybox
 
 EXPOSE 8123
 
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["/bin/sh"]
