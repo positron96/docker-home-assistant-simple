@@ -1,8 +1,9 @@
 FROM python:3.6-alpine3.6
 
+RUN pip3 install homeassistant
+
 EXPOSE 8123
 
-COPY ttt.py /ttt.py
-
-CMD ["/ttt.py"]
-ENTRYPOINT ["python3"]
+RUN mkdir /config
+CMD ["--config", "/config"]
+ENTRYPOINT ["hass"]
